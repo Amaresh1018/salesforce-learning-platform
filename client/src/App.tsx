@@ -1,27 +1,25 @@
+import { Link } from 'react-router-dom';
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
-        <h1 className="text-3xl font-bold text-gray-800 text-center mb-4">
-          🎓 Salesforce Learning Platform
-        </h1>
-        <p className="text-gray-600 text-center mb-6">
-          Day 1: Frontend Setup Complete!
-        </p>
-        <div className="space-y-4">
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-            ✅ React 18 with TypeScript
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+      <nav className="bg-white shadow-md p-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-xl font-bold">Salesforce Decode</h1>
+          <div className="space-x-4">
+            <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
+            <Link to="/register" className="text-blue-600 hover:underline">Register</Link>
           </div>
-          <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded">
-            ✅ Vite for fast development
-          </div>
-          <div className="bg-purple-100 border border-purple-400 text-purple-700 px-4 py-3 rounded">
-            ✅ Tailwind CSS configured
-          </div>
+        </div>
+      </nav>
+      <div className="flex items-center justify-center mt-20">
+        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4 text-center">
+          <h1 className="text-3xl font-bold text-gray-800 mb-4">Welcome!</h1>
+          <p className="text-gray-600">Day 2: Auth Pages Ready</p>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
