@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';  // Add this import for fake auth
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();  // Get login function from context
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login (we'll add real auth later)
-    console.log('Logged in with:', { email, password });
-    navigate('/');  // Redirect to home after "login"
+    login(email);  // "Log in" the user (saves to state/local storage)
+    navigate('/');  // Redirect to home
   };
 
   return (

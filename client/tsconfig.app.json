@@ -21,7 +21,10 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Added for React types resolution */
+    "types": ["react", "react-dom", "node"]  // New: Explicitly includes React types to fix ReactNode
   },
   "include": ["src"]
 }
