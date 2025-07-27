@@ -1,21 +1,16 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';  // Provides fake auth state
-import App from './App';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
-import Dashboard from './components/Dashboard';  // Added: Your protected dashboard
+import Dashboard from './components/Dashboard';
 
-const router = createBrowserRouter([
-  { path: '/', element: <App /> },
-  { path: '/login', element: <Login /> },
-  { path: '/register', element: <Register /> },
-  { path: '/dashboard', element: <Dashboard /> },  // Added: Protected route
-]);
-
-export default function Routes() {
+export default function AppRoutes() {
   return (
-    <AuthProvider>  {/* Wraps the entire app for global auth state */}
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
   );
 }

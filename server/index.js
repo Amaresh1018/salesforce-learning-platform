@@ -6,8 +6,15 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-const authRoutes = require('./routes/auth'); // add this
-app.use('/api/auth', authRoutes);           // and this
+
+const authRoutes = require('./routes/auth'); 
+app.use('/api/auth', authRoutes);   
+
+const quizRoutes = require('./routes/quiz');
+app.use('/api/quiz', quizRoutes);
+
+const leaderboardRoutes = require('./routes/leaderboard');
+app.use('/api/leaderboard', leaderboardRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected!'))

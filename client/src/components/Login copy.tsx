@@ -25,18 +25,12 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 flex items-center justify-center px-4 py-12">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white bg-opacity-10 backdrop-blur-md rounded-xl shadow-lg p-10">
-        {/* Left side: Animated Clouds + Cloud Image */}
-        <div className="hidden md:flex items-center justify-center relative min-h-[400px]">
-          {/* Animated SVG Clouds */}
-          <Cloud y={40} duration={18} delay={0} scale={1.0} color="#fff" opacity={0.22} />
-          <Cloud y={140} duration={25} delay={3} scale={0.8} color="#c7d2fe" opacity={0.16} />
-          <Cloud y={80} duration={16} delay={8} scale={0.65} color="#f3f4f6" opacity={0.19} />
-          <Cloud y={200} duration={30} delay={5} scale={0.45} color="#a5b4fc" opacity={0.14} />
-          {/* Main Salesforce cloud illustration */}
+        {/* Left side: Local Illustration */}
+        <div className="hidden md:flex items-center justify-center">
           <img
             src={sfCloudImage}
             alt="Salesforce Cloud Illustration"
-            className="relative z-10 rounded-2xl shadow-2xl w-4/5 max-h-[400px] object-contain animate-fadein"
+            className="rounded-2xl shadow-2xl w-full max-h-[400px] object-contain animate-fadein"
             loading="lazy"
           />
         </div>
@@ -45,7 +39,6 @@ export default function Login() {
         <form
           onSubmit={handleSubmit}
           className="relative w-full max-w-md text-white flex flex-col"
-          autoComplete="on"
         >
           <h2 className="text-4xl font-extrabold mb-6 drop-shadow-md text-center">
             Sign in to your account
@@ -68,13 +61,11 @@ export default function Login() {
               required
               autoComplete="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label
               htmlFor="email"
-              className="absolute text-gray-300 text-sm pointer-events-none duration-300 transform -translate-y-6 scale-75 top-3 left-0 origin-[0]
-                peer-placeholder-shown:translate-y-3 peer-placeholder-shown:scale-100
-                peer-focus:-translate-y-6 peer-focus:scale-75"
+              className="absolute text-gray-300 text-sm duration-300 transform -translate-y-6 scale-75 top-3 left-0 origin-[0] peer-placeholder-shown:translate-y-3 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
             >
               Email address
             </label>
@@ -91,13 +82,11 @@ export default function Login() {
               required
               autoComplete="current-password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <label
               htmlFor="password"
-              className="absolute text-gray-300 text-sm pointer-events-none duration-300 transform -translate-y-6 scale-75 top-3 left-0 origin-[0]
-                peer-placeholder-shown:translate-y-3 peer-placeholder-shown:scale-100
-                peer-focus:-translate-y-6 peer-focus:scale-75"
+              className="absolute text-gray-300 text-sm duration-300 transform -translate-y-6 scale-75 top-3 left-0 origin-[0] peer-placeholder-shown:translate-y-3 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
             >
               Password
             </label>
@@ -105,7 +94,7 @@ export default function Login() {
             {/* Toggle password visibility */}
             <button
               type="button"
-              onClick={() => setShowPassword(prev => !prev)}
+              onClick={() => setShowPassword((prev) => !prev)}
               className="absolute right-0 top-3 text-gray-300 hover:text-white focus:outline-none"
               aria-label={showPassword ? 'Hide password' : 'Show password'}
               tabIndex={-1}
@@ -152,8 +141,7 @@ export default function Login() {
           </p>
         </form>
       </div>
-
-      {/* Animation styles and autofill fixes */}
+      {/* Animation styles for fade-in (optional) */}
       <style>{`
         .animate-fadein {
           animation: fadein 1.2s cubic-bezier(0.23, 1, 0.32, 1);
@@ -162,54 +150,7 @@ export default function Login() {
           from { opacity: 0; transform: translateY(20px);}
           to   { opacity: 1; transform: none;}
         }
-        @keyframes cloudfloat {
-          from { transform: translateX(-120px);}
-          to   { transform: translateX(580px);}
-        }
-        input:-webkit-autofill {
-          -webkit-text-fill-color: #fff;
-          transition: background-color 5000s ease-in-out 0s;
-        }
-        input:-webkit-autofill ~ label,
-        input:not(:placeholder-shown) ~ label,
-        input:focus ~ label {
-          transform: translateY(-1.5rem) scale(0.75);
-          color: #d1d5db !important;
-        }
       `}</style>
     </div>
-  );
-}
-
-// Cloud drifting SVG animation component used behind the image
-type CloudProps = {
-  y: number
-  duration: number
-  delay: number
-  scale: number
-  color?: string
-  opacity?: number
-};
-function Cloud({ y, duration, delay, scale, color = '#fff', opacity = 0.2 }: CloudProps) {
-  return (
-    <svg
-      viewBox="0 0 240 90"
-      style={{
-        position: 'absolute',
-        left: -120,
-        top: y,
-        opacity,
-        transform: `scale(${scale})`,
-        animation: `cloudfloat ${duration}s linear ${delay}s infinite`,
-        zIndex: 1,
-      }}
-      width={180}
-      height={70}
-      fill="none"
-    >
-      <ellipse cx="60" cy="60" rx="60" ry="25" fill={color} />
-      <ellipse cx="140" cy="50" rx="60" ry="23" fill={color} />
-      <ellipse cx="115" cy="33" rx="45" ry="16" fill={color} />
-    </svg>
   );
 }
