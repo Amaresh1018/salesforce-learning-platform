@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';  // Add this import for fake auth
+import { useAuth } from '../context/AuthContext';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth();  // Get login function from context
+  const { login } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    login(email);  // "Log in" the user (saves to state/local storage)
-    navigate('/');  // Redirect to home
+    try {
+      await login(email, password);
+      navigate('/');
+    } catch (error: any) {
+      alert('Login failed: ' + (error.response?.data?.error || error.message));
+    }
   };
 
   return (
@@ -22,7 +26,7 @@ function Login() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
           className="w-full px-4 py-2 border rounded-md"
           required
         />
@@ -30,7 +34,7 @@ function Login() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           className="w-full px-4 py-2 border rounded-md"
           required
         />
