@@ -113,12 +113,12 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen pt-16 bg-gradient-to-br from-blue-500 to-purple-600 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500 text-white">
+      <div className="min-h-screen pt-16 bg-gradient-to-br dark:from-gray-900 dark:to-gray-800 transition-colors duration-500 text-white">
         <Navbar dark={dark} toggleDark={toggleDark} />
         <main>
           <Routes />
         </main>
-        <Footer /> {/* Remove if not using */}
+        <Footer />
       </div>
     </AuthProvider>
   );

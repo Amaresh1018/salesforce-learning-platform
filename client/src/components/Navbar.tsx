@@ -92,8 +92,21 @@ export default function Navbar({ dark, toggleDark }: NavbarProps) {
             </>
           ) : (
             <>
-              <Link to="/login" className="hover:underline font-semibold">Login</Link>
-              <Link to="/register" className="hover:underline font-semibold">Register</Link>
+              {/* <Link to="/login" className="hover:underline font-semibold">Login</Link> */}
+              {/* <Link to="/register" className="relative inline-flex items-center justify-center px-8 py- overflow-hidden font-medium text-indigo-600 rounded-lg shadow-2xl bg-white hover:text-indigo-900 transition focus:outline-none">Register</Link> */}
+              <button
+                onClick={() => navigate('/login')}
+                className="relative inline-flex items-center justify-center px-8 py-1 overflow-hidden font-medium text-indigo-600 rounded-lg shadow-2xl  hover:text-indigo-900 transition focus:outline-none"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 animate-gradient-x opacity-75"></span>
+                <span className="relative">Login</span>
+              </button>
+              <button
+                onClick={() => navigate('/register')}
+                className="px-8 py-1 font-medium rounded-lg border-2 border-white text-white hover:bg-white hover:text-indigo-900 transition"
+              >
+                Register
+              </button>
             </>
           )}
           <button
