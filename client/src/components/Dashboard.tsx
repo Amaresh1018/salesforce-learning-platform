@@ -219,7 +219,7 @@ export default function Dashboard() {
         bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100
         dark:from-gray-900 dark:via-gray-800 dark:to-black
         text-gray-900 dark:text-white
-        flex flex-col gap-10 p-6 max-w-7xl mx-auto
+        flex flex-col gap-10 p-6 mx-auto
       "
     >
       {/* Hero Stats Panel */}
